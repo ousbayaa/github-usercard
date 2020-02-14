@@ -68,11 +68,26 @@ function userCard(data){
   info.append(userName);
   info.append(location);
   info.append(profile);
-  info.append(link);
+  profile.append(link);
   info.append(followers);
   info.append(following);
   info.append(bio);
 
+  newCard.classList.add('card');
+  info.classList.add('card-info');
+  name.classList.add('name');
+
+  newImg.src = data.data.avatar_url;
+  name.textContent = data.data.name;
+
+  userName.textContent = data.data.login;
+  location.textContent = "Location: " + data.data.location;
+  profile.textContent = "Profile: ";
+  link.textContent = data.data.html_url;
+  link.href = data.data.html_url;
+  followers.textContent = "Followers: " + data.data.followers;
+  following.textContent = "Following: " + data.data.following;
+  bio.textContent = "Bio: " + data.data.bio;
 
   return userCard;
 }
