@@ -3,8 +3,15 @@
            https://api.github.com/users/<your name>
 */
 
-const myGithub = axios.get('https://api.github.com/users/ousbayaa');
-console.log(myGithub);
+axios.get('https://api.github.com/users/ousbayaa')
+  .then( response => {
+    
+      console.log(response.data);
+      const card = document.querySelector('.cards');
+      card.appendChild(userCard(response.data));
+    
+  });
+
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -16,6 +23,7 @@ console.log(myGithub);
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
 */
+
 
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
@@ -77,20 +85,21 @@ function userCard(data){
   info.classList.add('card-info');
   name.classList.add('name');
 
-  newImg.src = data.data.avatar_url;
-  name.textContent = data.data.name;
+  newImg.src = data.avatar_url;
+  name.textContent = data.name;
 
-  userName.textContent = data.data.login;
-  location.textContent = "Location: " + data.data.location;
+  userName.textContent = data.login;
+  location.textContent = "Location: " + data.location;
   profile.textContent = "Profile: ";
-  link.textContent = data.data.html_url;
-  link.href = data.data.html_url;
-  followers.textContent = "Followers: " + data.data.followers;
-  following.textContent = "Following: " + data.data.following;
-  bio.textContent = "Bio: " + data.data.bio;
+  link.textContent = data.html_url;
+  link.href = data.html_url;
+  followers.textContent = "Followers: " + data.followers;
+  following.textContent = "Following: " + data.following;
+  bio.textContent = "Bio: " + data.bio;
 
-  return userCard;
+  return newCard;
 }
+
 
 
 /* List of LS Instructors Github username's: 
